@@ -1,6 +1,7 @@
 import * as THREE from 'three';
 import WEBGL from 'three/examples/jsm/capabilities/WebGL.js';
 import { GUI } from 'three/examples/jsm/libs/lil-gui.module.min';
+import Stats from 'three/examples/jsm/libs/stats.module';
 
 if (WEBGL.isWebGL2Available()) {
     // WebGL is available
@@ -23,6 +24,10 @@ if (WEBGL.isWebGL2Available()) {
     const renderer = new THREE.WebGLRenderer({ antialias: true });
     renderer.setSize(window.innerWidth, window.innerHeight);
     document.body.appendChild(renderer.domElement);
+    const stats = new Stats();
+    stats.domElement.style.position = 'absolute';
+    stats.domElement.style.top = '0px';
+    document.body.appendChild(stats.domElement);
 
     // camera
     const camera = new THREE.PerspectiveCamera(45, window.innerWidth / window.innerHeight, 1, 4000);
@@ -80,6 +85,9 @@ if (WEBGL.isWebGL2Available()) {
         // Render the scene
         renderer.render(scene, camera);
 
+        // update stats
+        stats.update( );
+        
         // Request the browser to execute the animation-rendering loop
         requestAnimationFrame(animate);
     };
