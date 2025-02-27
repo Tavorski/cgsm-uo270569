@@ -6,9 +6,11 @@ import WEBGL from 'three/examples/jsm/capabilities/WebGL.js';
 if (WEBGL.isWebGL2Available()) {
     // WebGL is available
 
-    // vectors and sizes
+    
     const cam_position = new THREE.Vector3(0, 0, 500);
-
+    const camera = new THREE.PerspectiveCamera(45, window.innerWidth / window.innerHeight, 1, 4000);
+    camera.position.set(cam_position.x, cam_position.y, cam_position.z);
+    
     // escena
     const scene = new THREE.Scene();
     const clock = new THREE.Clock();
@@ -21,44 +23,20 @@ if (WEBGL.isWebGL2Available()) {
 
     const url = "videos/sintel.mpd";
     const player = dashjs.MediaPlayer().create();
+    const video = document.getElementById('player');
     player.initialize(document.querySelector("#player"), url, true);
 
-    const video = document.getElementById('video');
     const image = document.createElement('canvas');
-    image.width = 480;  // Video width
-    image.height = 204; // Video height
+    image.width = 800;  // Video width
+    image.height = 400; // Video height
     const imageContext = image.getContext('2d');
     imageContext.fillStyle = '#000000';
     imageContext.fillRect(0, 0, image.width - 1, image.height - 1);
     const texture = new THREE.Texture(image);
 
-    // camera
-    const camera = new THREE.PerspectiveCamera(45, window.innerWidth / window.innerHeight, 1, 4000);
-
-    // geos
     const planeGeo = new THREE.PlaneGeometry(image.width, image.height, 4, 4);
-
-    // mats
     const planeMat = new THREE.MeshBasicMaterial({ map: texture });
-
-    // meshes
     const planeMesh = new THREE.Mesh(planeGeo, planeMat);
-
-    // transformations
-    camera.position.set(cam_position.x, cam_position.y, cam_position.z);
-
-    const test = new THREE.Mesh(
-        new THREE.SphereGeometry(100, 100, 100),
-        new THREE.MeshLambertMaterial()
-    );
-    test.position.set(0, 0, 0);
-    scene.add(
-        test
-    );
-    const testlight = new THREE.PointLight();
-    testlight.position.set(100, 100, 500);
-    testlight.decay = 0;
-    scene.add(testlight);
 
     // scene add and render
     scene.add(planeMesh);

@@ -1,0 +1,78 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <meta charset='utf-8'>
+    <title>Informe de prácticas de CGSM (2024-2025)</title>
+    <link rel="stylesheet" type="text/css" href="report.css">
+</head>
+
+<body>
+    <!-- Información general -->
+    <div id="head">
+        <table id="general">
+            <tr>
+                <th class="header">Nombre:</th>
+                <td>Andrés Gómez Taborcías</td>
+            </tr>
+            <tr>
+                <th>Práctica:</th>
+                <td>5</td>
+            </tr>
+        </table>
+    </div>
+    <div id="content">
+        <h1>Memoria</h1>
+        <h2>Descripción de la práctica</h2>
+        <p>
+            En esta práctica se verá el funcionamiento del estandar para servicios de streaming de video MPEG-DASH y el uso
+            de herramientas para construir servicios que empleen dicho estandar. Estas herramientas permitiran separar multimedia
+            en pistas únicas de audio o video para luego ser servidas en función de la calidad que se solicite en el lado del cliente, además y la creacion
+            de los manifiestos que anuncian el contenido (las pistas) disponible.
+            
+        </p>
+        <h3>Cuestiones:</h3>
+        <p>
+            <!-- Ejercicio al que pertenece la pregunta-->
+        <h4>2. Introducción a MPEG-DASH</h4>
+        </p>
+        <p style="margin-left:5em">
+            <!-- Pregunta-->
+            ¿Cuántas codificaciones de audio distintas puede utilizar el cliente para adaptarse a condiciones cambiantes
+            de la red?<br>
+            <!-- Respuesta-->
+            -SNE_DASH_SD_CASE1A_REVISED: 1 codificación<br>
+            -MultiResMPEG2: 1 codificación<br>
+            <br>
+            <!-- Pregunta-->
+            ¿Y de vídeo?<br>
+            <!-- Respuesta-->
+            -SNE_DASH_SD_CASE1A_REVISED: 4 codificaciones<br>
+            -MultiResMPEG2: 3 codificaciones<br>
+            <br>
+            <!-- Pregunta-->
+            ¿Cuántas resoluciones de vídeo distintas puede usar el cliente? Indica cuáles.<br>
+            <!-- Respuesta-->
+            -SNE_DASH_SD_CASE1A_REVISED: Solo una, 854x480<br>
+            -MultiResMPEG2: Tres resoluciones: 512x288, 768x432 y 1280x720<br>
+        </p>
+        <h2>Ejercicio 1</h2>
+        <iframe class="container" src="prac5-1.html">
+            Escena 1
+        </iframe>
+        <h2>Ejercicio 2</h2>
+        <iframe class="container" src="prac5-2.html">
+            Escena 2
+        </iframe>
+        
+        <h2>Dificultades encontradas</h2>
+        <p>
+            Fue un poco complicado averiguar como había que modificar el ejercicio de la sesion 3 para que usase MPEG-DASH, pero al final
+            encontré que el problema estaba en el uso de distintos IDs para referenciar los elementos del documento HTML en el código JavaScript.
+
+            Aparte de eso, la práctica se realizó sin problemas.
+        </p>
+    </div>
+</body>
+
+</html>
