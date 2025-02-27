@@ -120,8 +120,8 @@ if (WEBGL.isWebGL2Available()) {
     renderer.render(scene, camera);
 
     // gui 
-    const gui = new GUI();
-    gui.add(controlData, 'bumpScale', -4, 4).step(0.1).name('bumpScale');
+    // const gui = new GUI();
+    // gui.add(controlData, 'bumpScale', -4, 4).step(0.1).name('bumpScale');
 
     // funciones
     function animate() {
